@@ -165,6 +165,7 @@ class ArticleServiceTest {
         assertThat(article.getUsers()).doesNotContain(user);
         assertThat(user.getArticlesReaction()).doesNotContain(article);
 
+
         verify(articleRepository, atLeast(2)).findById(articleId);
         verify(articleRepository, atLeast(2)).save(article);
     }
@@ -224,7 +225,7 @@ class ArticleServiceTest {
 
     @Test
     void getArticleByCategoryId_categoryNotExists_throws() {
-        Integer categoryId = 999;
+        Integer categoryId = 99;
         when(userService.getUser(userDetails)).thenReturn(createUser(13L, "x"));
         when(categoryRepository.existsById(categoryId)).thenReturn(false);
 
